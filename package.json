@@ -1,0 +1,27 @@
+{
+  "name": "try-something",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://mia0421@github.com/mia0421/try-something.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mia0421/try-something/issues"
+  },
+  "homepage": "https://github.com/mia0421/try-something#readme",
+  "devDependencies": {
+    "angular": "^1.4.8",
+    "browser-sync": "^2.10.0",
+    "gulp": "^3.9.0",
+    "gulp-concat": "^2.6.0",
+    "gulp-notify": "^2.2.0",
+    "gulp-typescript": "^2.10.0"
+  }
+}
