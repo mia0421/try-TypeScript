@@ -26,11 +26,11 @@
         name: string;
         age: number;
         gender?: boolean;
+        fun?(age: number):boolean;
     }
     var mia:user = {
         name:"mia",
         age:28
-
     }
 
     function createUser(data:user){
@@ -81,6 +81,7 @@
      }
 
      interface faceB { 
+
          age:number;
      }
 
@@ -91,7 +92,7 @@
      var face:faceAll = {
          name :"mia",
          addr :"台北",
-         age : 20,
+         age : 20
      };
 
      console.log("interface 擴展 ==>",face.name,face.addr,face.age);
