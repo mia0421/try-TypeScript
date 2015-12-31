@@ -333,7 +333,7 @@ protected 跟private有點類似一樣都是外部無法訪問
 但繼承之class可以訪問
 
 ```
-class ClassD {
+class ClassD {g
 
     protected name:string;
 
@@ -370,5 +370,51 @@ class ClassE {
 }
 
 new ClassE("ClassE").fun(); /// console出 ClassE
+
+```
+
+
+**屬性的Set與Get**
+
+我們可以直接存取class的屬性,也可以透過set與get的方式來存取
+
+> 注意：要求设置编译器输出目标为ECMAScript 5或更高
+
+```
+class ClassF {
+    private _name: string;
+
+    get getName():string {
+        return this._name;
+    }
+
+    set setNmae(name: string) {
+        this._name = name;
+    }
+}
+```
+
+** 關於Static **
+
+被設定為static 的屬性是屬於Class的 並不屬於new出來的實體
+
+所以其值是會被保留的
+
+> static 的使用不可用this需用class的名字
+
+> Ex: ClassG.index
+
+```
+class ClassG {
+    static index:number = 0;
+    constructor(){
+        ClassG.index+=1;
+    }
+}
+
+var ClaG = new ClassG();
+console.log(ClassG.index) // 列印出 1
+var ClaG_1 = new ClassG();
+console.log(ClassG.index) // 列印出 2
 
 ```

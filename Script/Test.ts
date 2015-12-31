@@ -203,3 +203,20 @@ class classF extends ClassD {
     }
 }
 new classF();
+
+//// === 關於Static ===
+
+class ClassG {
+    static index:number = 0;
+
+    constructor(){
+        ClassG.index+=1;
+    }
+}
+
+
+
+var ClaG = new ClassG();
+console.log(ClassG.index)
+var ClaG_1 = new ClassG();
+console.log(ClassG.index)
