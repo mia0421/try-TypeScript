@@ -30,8 +30,6 @@ gulp.task('browser-sync', function() {
             baseDir: "./"
         }
     });
-
-
 });
 
 gulp.task("init",["ts","concat","browser-sync","watch-all"]);
@@ -40,7 +38,6 @@ gulp.task("watch-all",function(){
     gulp.watch(path.ts,["ts"]);
     gulp.watch(path.js,["concat"]);
     gulp.watch(path.build,function(){
-        console.log("reload")
         bs.reload();
     });
 });

@@ -80,7 +80,7 @@
          name:string;
      }
 
-     interface faceB { 
+     interface faceB {
 
          age:number;
      }
@@ -96,3 +96,110 @@
      };
 
      console.log("interface 擴展 ==>",face.name,face.addr,face.age);
+
+//== Class ==
+
+class MyClass {
+    name:string;
+
+    constructor(helloMess:string,name:string){
+        console.log("holle message",helloMess);
+        this.createUser(name)
+    }
+
+    createUser(name:string){
+            this.name = name;
+    }
+
+    updateUser(){
+
+    }
+}
+
+var isMia = new MyClass("Hi~Hi~","Mia");
+console.log(isMia.name);
+
+
+//// === 繼承===
+//// 1. 繼承是否架構要完全相同？
+////    A: 可以不用,不覆寫父的方法 當class被new出來時也可呼叫父的方法
+//// 2. 覆寫父層方法又用super呼叫同方法的結果？
+////    A:可以覆寫,如果又用super呼叫一樣執行父原始的方法
+//// 3. 變數宣告型態練習
+//// ps. 1.繼承某一class constructor 一定要寫super
+class ClassTemplate {
+    name:string;
+    constructor(name:string){
+        console.log("ClassTemplate 初始",name);
+    }
+    fun(){
+        console.log("Class Template fun");
+    }
+    funTemplate(){
+        console.log("Class Template funTemplate");
+    }
+}
+
+class ClassA extends ClassTemplate {
+    constructor(name:string){
+        console.log("classA 初始",name);
+        super(name);
+    }
+    fun(){
+        console.log("覆寫 fun方法");
+        //// 此class沒有name屬性但繼承之class有所以可以使用
+        console.log("name 屬性",this.name);
+
+    }
+    funA(){
+        console.log("classA");
+    }
+}
+
+class ClassB extends ClassTemplate {
+    name:string;
+    constructor(name:string){
+        console.log("classB 初始",name);
+        super(name);
+    }
+    funB(){
+        console.log("classB");
+    };
+}
+
+var claA = new ClassA("a");
+var claB = new ClassB("a");
+
+claA.name="ClaA";
+claA.fun();
+claB.fun();
+
+//// === private===
+class ClassC {
+    private name:string;
+    constructor(){
+
+    }
+}
+
+//new ClassC().name //// 會error
+
+//// === Protected ===
+
+class ClassD {
+
+    protected name:string;
+
+    constructor(name){
+        this.name=name;
+    }
+}
+
+class classF extends ClassD {
+    constructor(){
+        super("is name");
+        console.log("被設置為Protected的屬性",this.name);
+
+    }
+}
+new classF();
