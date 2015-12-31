@@ -1,0 +1,11 @@
+{
+    "compilerOptions": {
+        "module": "system",
+        "sourceMap": "true",
+        "noImplicitAny": "true"
+    },
+    "files": [
+        "Script/export.ts",
+        "Script/import.ts"
+    ]
+}

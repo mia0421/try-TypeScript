@@ -141,13 +141,36 @@ var classF = (function (_super) {
     return classF;
 })(ClassD);
 new classF();
-var ClassE = (function () {
-    function ClassE(name) {
-        this.name = name;
+//// === 關於Static ===
+var ClassG = (function () {
+    function ClassG() {
+        ClassG.index += 1;
     }
-    ClassE.prototype.fun = function () {
-        console.log(this.name);
-    };
-    return ClassE;
+    ClassG.index = 0;
+    return ClassG;
 })();
-new ClassE("ClassE").fun();
+var ClaG = new ClassG();
+console.log(ClassG.index);
+var ClaG_1 = new ClassG();
+console.log(ClassG.index);
+
+var myModule;
+(function (myModule) {
+    var ClassTest = (function () {
+        function ClassTest() {
+            this.p1 = "p1";
+            this.p2 = 1;
+        }
+        ClassTest.prototype.getP1 = function () {
+            return this.p1;
+        };
+        ClassTest.prototype.getP2 = function () {
+            return this.p2;
+        };
+        return ClassTest;
+    })();
+    myModule.ClassTest = ClassTest;
+})(myModule || (myModule = {}));
+
+var myClass = new myModule.ClassTest();
+console.log(myClass.getP1());
