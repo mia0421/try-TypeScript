@@ -154,6 +154,7 @@ console.log(ClassG.index);
 var ClaG_1 = new ClassG();
 console.log(ClassG.index);
 
+
 var myModule;
 (function (myModule) {
     var ClassTest = (function () {
@@ -174,3 +175,4 @@ var myModule;
 
 var myClass = new myModule.ClassTest();
 console.log(myClass.getP1());
+

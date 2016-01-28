@@ -153,4 +153,3 @@ var ClaG = new ClassG();
 console.log(ClassG.index);
 var ClaG_1 = new ClassG();
 console.log(ClassG.index);
-//# sourceMappingURL=Test.js.map
