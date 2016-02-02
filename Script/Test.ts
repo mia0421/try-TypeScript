@@ -277,7 +277,7 @@ interface Iface<T> {
 }
 
 var fun6 = (a:string):Iface<string> => {
-   var rd:Iface<string> =
+   var rd:Iface<string> ;
     return rd;
 }
 

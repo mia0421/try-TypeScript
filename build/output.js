@@ -173,7 +173,7 @@ var fun3 = function (aa) {
 };
 fun3("aa");
 var fun6 = function (a) {
-    var rd = ;
+    var rd;
     return rd;
 };
 
