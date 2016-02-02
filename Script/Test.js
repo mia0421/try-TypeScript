@@ -172,7 +172,67 @@ var fun3 = function (aa) {
     return aa;
 };
 fun3("aa");
-var fun6 = function (a) {
+var test_function = function (a) {
     var rd;
+    rd.item = "aaa";
+    rd.item2 = "aaa";
     return rd;
 };
+var test_function2 = function () {
+    var rd;
+    rd.item = "string";
+    rd.item2 = false;
+    return rd;
+};
+var test_function2 = function () {
+    var rd = {
+        item: "aa",
+        item2: false
+    };
+    return rd;
+};
+/*情境一
+    通常我們使用jquery都會使用$
+    但當使用Typescript沒有用
+    declare 聲明＄編譯則會報錯
+
+    declare var $;
+    $("#id").html("<h1></h1>");
+*/
+/*情境二
+ 當我們在html頁面上宣告一個變數,但想在該頁面引入的ts檔中使用
+ 就必須要declare該變數,因為該變數在此ts檔並未被定義
+ */
+// === for..of vs for..in ===
+/*
+    for..of 再跑回圈時很像map或forEach會取出array的內容
+    map或forEach無法在迭代的過程中使用break離開迴圈
+    但如果使用for..of則可以正確的使用這些參數
+
+*/
+var arrayItem = ["a", "b", "c"];
+for (var _i = 0; _i < arrayItem.length; _i++) {
+    var i = arrayItem[_i];
+    if (i === "b") {
+        break;
+    }
+    console.log("for of: " + i);
+}
+arrayItem.map(function (i) {
+    if (i === "b") {
+        return;
+    }
+    console.log("map: " + i);
+});
+arrayItem.forEach(function (i) {
+    if (i === "b") {
+        return;
+    }
+    console.log("forEach: " + i);
+});
+/*
+ for..in 再跑回圈時會x會是index,如果跑一個object則會x則是屬性名稱
+ */
+for (var x in arrayItem) {
+    console.log("for in: " + x);
+}

@@ -276,12 +276,97 @@ interface Iface<T> {
     item2:string;
 }
 
-var fun6 = (a:string):Iface<string> => {
+var test_function = (a:string):Iface<string> => {
    var rd:Iface<string> ;
+    rd.item = "aaa";
+    rd.item2= "aaa";
+    return rd;
+}
+
+interface Iface2<T,K> {
+    item:T;
+    item2:K;
+}
+
+var test_function2 = ():Iface2<string,boolean> => {
+    var rd :Iface2<string,boolean> ;
+    rd.item="string";
+    rd.item2=false;
     return rd;
 }
 
 
+var test_function2 = ():Iface2<string,boolean> => {
+    var rd :Iface2<string,boolean>  = {
+        item:"aa",
+        item2:false
+    };
+    return rd;
+}
+
+// ===declare===
+/*
+ 通常用於定義外部plugh(es:jQuery)
+ 他會將變數型別重新定義為any
+ 當然也失去型別檢查的機制！
+
+ 他不會真的產生javascript
+ 只是在typescript不會因為識別不到
+ 該變數而編譯失敗
+ */
+
+declare var bb:number;
+
+/*情境一
+    通常我們使用jquery都會使用$
+    但當使用Typescript沒有用
+    declare 聲明＄編譯則會報錯
+
+    declare var $;
+    $("#id").html("<h1></h1>");
+*/
 
 
 
+/*情境二
+ 當我們在html頁面上宣告一個變數,但想在該頁面引入的ts檔中使用
+ 就必須要declare該變數,因為該變數在此ts檔並未被定義
+ */
+
+
+// === for..of vs for..in ===
+
+/*
+    for..of 再跑回圈時很像map或forEach會取出array的內容
+    map或forEach無法在迭代的過程中使用break離開迴圈
+    但如果使用for..of則可以正確的使用這些參數
+
+*/
+var arrayItem = ["a","b","c"];
+for(var i of arrayItem ){
+    if(i === "b"){
+        break;
+    }
+    console.log("for of: " + i);
+}
+
+arrayItem.map((i)=>{
+    if(i === "b"){
+        return;
+    }
+    console.log("map: " + i);
+});
+
+arrayItem.forEach((i)=>{
+    if(i === "b"){
+        return;
+    }
+    console.log("forEach: " + i);
+});
+
+/*
+ for..in 再跑回圈時會x會是index,如果跑一個object則會x則是屬性名稱
+ */
+for(var x in arrayItem ){
+    console.log("for in: " + x);
+}

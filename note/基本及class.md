@@ -1,8 +1,7 @@
 
-環境建立
+#環境建立
 ------
-
-##### 1. 安裝TypeScript
+### 1. 安裝TypeScript
 
 首先在環境中安裝typescipt,他是一個全域的插件
 
@@ -10,16 +9,15 @@
 npm install -g typescript
 ```
 
-> typkescript雖然可以讓javascript擁有強型別的特性
+typkescript雖然可以讓javascript擁有強型別的特性
 
-> 但最終還是需要轉換成javascript網頁才能認得
+但最終還是需要轉換成javascript網頁才能認得
 
-> 所以還是需樣有一個轉換的工具
+所以還是需樣有一個轉換的工具
 
-編譯工具
-------
+#編譯工具
 
-**gulp**
+### gulp
 
 這邊一樣使用gulp來處理typescript轉換
 
@@ -28,6 +26,8 @@ npm install -g typescript
 ```
 npm install gulp-typescript
 ```
+
+gulp 內task設定
 
 ```
 var ts = require("gulp-typescript");
@@ -42,10 +42,10 @@ gulp.task("ts", function () {
 ```
 
 
- 型別
+#型別
 ------
 
-**基本型別**
+##基本型別
 
 ```
 //// 數字
@@ -58,7 +58,7 @@ var b:String = "aaa";
 var c:boolean = false;
 ```
 
-**Array**
+##Array
 
 ```
 //// 陣列的2種表示方式
@@ -66,9 +66,10 @@ var users: string[] = ["aa","bb"];
 var users2: Array<string> = ["aa","bb"];
 ```
 
-Enum
-------
->設定一組名稱用來解釋一些常數型的狀態
+#Enum
+---------
+
+設定一組名稱用來解釋一些常數型的狀態
 
 ```
 enum color {
@@ -100,14 +101,12 @@ console.log("列舉 ==>",book);
 ```
 
 
-Interface
+#Interface
 ------
 
 設定一組object格式讓繼承此interface需實做此規格
 
-> 屬性加上 ? 表示此屬性不一定要被實作
-> 除了可以定義變數也可以定義方法
-> 方法可制定傳入參數與回傳屬性
+屬性加上 ? 表示此屬性不一定要被實作, 除了可以定義變數也可以定義方法, 方法可制定傳入參數與回傳屬性
 
 ```
 interface user {
@@ -119,12 +118,9 @@ interface user {
 }
 ```
 
-
 來看看interface怎麼被繼承
 
-> object變數 將型別設定為interface
-
-> 該變數必須實作interface所以有屬性(除了設定?的屬性)
+object變數 將型別設定為interface , 該變數必須實作interface所以有屬性(除了設定?的屬性)
 
 ```
 var mia:user = {
@@ -133,7 +129,7 @@ var mia:user = {
 }
 ```
 
-> 也可設定為function參數之內容,傳入參數必須符合interface的格式
+也可設定為function參數之內容,傳入參數必須符合interface的格式
 
 ```
 function createUser(data:user){
@@ -141,7 +137,7 @@ function createUser(data:user){
 }
 ```
 
-> 設定一組interface來定義function的 **回傳值** 或 **參數**
+設定一組interface來定義function的 **回傳值** 或 **參數**
 
 作為 **回傳值**
 
@@ -171,7 +167,7 @@ var test1:Ifun = function(x:string,y:string) {
 
 ```
 
-> 給class繼承 必須要有相同的屬性設定
+給class繼承 必須要有相同的屬性設定
 
 ```
 class isUser implements user {
@@ -192,11 +188,11 @@ class isUser implements user {
 }
 ```
 
-**interface 擴展**
+##interface 擴展
 
 interface 也可以擴展其他interface的設定
 
->  faceAll擴展了faceA與faceB, extends可以多個由分號分開
+faceAll擴展了faceA與faceB, extends可以多個由分號分開
 
 ```
  interface faceA {
@@ -213,7 +209,7 @@ interface 也可以擴展其他interface的設定
  }
 ```
 
- > 當繼承faceAll的時候就可以寫faceA及faceB的屬性
+當繼承faceAll的時候就可以寫faceA及faceB的屬性
 
 ```
  var face:faceAll = {
@@ -223,12 +219,12 @@ interface 也可以擴展其他interface的設定
  };
 ```
 
- Class
- -----
-**class簡介**
+#Class
+-----
 
- 類似C#建立class的方式,可定屬性,建構式,方法如下範例
+##class簡介
 
+類似C#建立class的方式,可定屬性,建構式,方法如下範例
 
 ```
 
@@ -252,7 +248,7 @@ interface 也可以擴展其他interface的設定
 
 ```
 
-> 使用時將class給new出來,就可以使用該class提供之屬性或方法
+使用時將class給new出來,就可以使用該class提供之屬性或方法
 
 ```
 var isMia = new MyClass("Hi~Hi~","Mia");
@@ -261,7 +257,7 @@ isMia.updateUser("Mia2號");
 
 ```
 
-**class繼承**
+##class繼承
 
 class可繼承其他class
 
@@ -337,7 +333,7 @@ claB.fun();
 
 ```
 
-**Private & Pubilc**
+##Private & Pubilc
 
 class內屬性預設皆為Pubilc
 
@@ -356,7 +352,7 @@ class ClassA {
 new ClassA().name //// 會error
 ```
 
-**Protected**
+##Protected
 
 protected 跟private有點類似一樣都是外部無法訪問
 
@@ -384,7 +380,7 @@ new classF(); //// console出被設置為Protected的屬性 is name
 ```
 
 
-**constructor 參數屬性**
+##constructor 參數屬性
 
 在constructor同時宣告屬性可將外部參數直接設定為class的屬性
 
@@ -403,8 +399,7 @@ new ClassE("ClassE").fun(); /// console出 ClassE
 
 ```
 
-
-**屬性的Set與Get**
+##屬性的Set與Get
 
 我們可以直接存取class的屬性,也可以透過set與get的方式來存取
 
@@ -424,7 +419,7 @@ class ClassF {
 }
 ```
 
-**關於Static**
+##關於Static
 
 被設定為static 的屬性是屬於Class的 並不屬於new出來的實體
 
@@ -446,5 +441,31 @@ var ClaG = new ClassG();
 console.log(ClassG.index) // 列印出 1
 var ClaG_1 = new ClassG();
 console.log(ClassG.index) // 列印出 2
+
+```
+
+
+#for..of vs for..in
+---------------------
+
+for..of 再跑回圈時很像map會取出array的內容
+
+```
+
+var arrayItem = ["a","b","c"];
+for(var i of arrayItem ){
+    console.log("for of: " + i);
+}
+
+```
+
+for..in 再跑回圈時會x會是index,如果跑一個object則會x則是屬性名稱
+
+```
+
+var arrayItem = ["a","b","c"];
+for(var x in arrayItem ){
+    console.log("for in: " + x);
+}
 
 ```

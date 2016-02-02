@@ -1,8 +1,8 @@
 
-Module
+#Module
 ------
 
-**export**
+##export
 
 類似C#的命名空間,module內僅限於module有用
 
@@ -43,11 +43,11 @@ module myModule {
 
 ```
 
-> 在mobule要使用這個class時就可以直接使用
+在mobule要使用這個class時就可以直接使用
 
-> 上方這段宣告 /// <reference path="./export.ts"/>
+上方這段宣告 /// <reference path="./export.ts"/>
 
-> 是當我使用的資料與mobule不同時的宣告(不加也可以)
+是當我使用的資料與mobule不同時的宣告(不加也可以)
 
 ```
 /// <reference path="./export.ts"/>
@@ -56,7 +56,7 @@ let myClass = new myModule.ClassTest();
 console.log(myClass.getP1());
 ```
 
-**import**
+##import
 
 typescript也提供import的方式但是需結合commantJS
 
@@ -64,7 +64,8 @@ typescript也提供import的方式但是需結合commantJS
 
 就可以直接使用export的資料
 
-**Function**
+#Function
+----------
 
 定義function的型別可以這樣寫
 
@@ -91,12 +92,14 @@ var fun5 = ()=> {};
 ```
 
 如果想直接回傳值也可以直接寫在 => 後方
+
 ```
 var fun5 = (a)=> a;
 ```
 
 
-**泛型 <T>**
+#泛型 <T>
+----------
 
 有時候沒法指定傳入的型別但又不想指定any可以透過泛型來處理
 
@@ -145,7 +148,68 @@ function funError2<T>(a:T):T {
 funError2("aa");
 ```
 
+##interface 泛型應用
 
+在interface中也可使用泛型來定義屬性的型別
+
+同function用法於實作這個interface時指定Ｔ的型別
+
+```
+interface Iface<T> {
+    item:T;
+    item2:string;
+}
+
+var test_function = (a:string):Iface<string> => {
+   var rd:Iface<string> ;
+    rd.item = "aaa";
+    rd.item2= "aaa";
+    return rd;
+}
+
+```
+
+也可同時設定多個泛型參數
+
+```
+interface Iface2<T,K> {
+    item:T;
+    item2:K;
+}
+
+var test_function2 = ():Iface2<string,boolean> => {
+    var rd :Iface2<string,boolean> ;
+    rd.item="string";
+    rd.item2=false;
+    return rd;
+}
+```
+
+
+#declare
+---------
+
+通常用於定義外部plugh(es:jQuery),或非此ts所定義的參數
+
+他不會真的產生javascript,只是在typescript不會因為識別不到該變數而編譯失敗
+
+情境一
+
+通常我們使用jquery都會使用$,但當使用Typescript沒有用declare＄編譯則會報錯
+
+他會將變數型別重新定義為any,當然也失去型別檢查的機制！
+
+```
+declare var $;
+$("#id").html("<h1></h1>");
+
+```
+
+情境二
+
+ 當我們在html頁面上宣告一個變數,但想在該頁面引入的ts檔中使用
+ 
+ 就必須要declare該變數,因為該變數在此ts檔並未被定義
 
 
 

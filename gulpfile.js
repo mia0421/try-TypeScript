@@ -5,8 +5,8 @@ var notify = require("gulp-notify");
 var concat = require("gulp-concat");
 
 var path = {
-    ts:["Script/**/*.ts"],
-    js:["Script/**/*.js"],
+    ts:["Script/*.ts"],
+    js:["Script/*.js"],
     html:["index.html"],
     build:["build/output.js","index.html"],
     all:["Script/**/*.ts","index.html"]
