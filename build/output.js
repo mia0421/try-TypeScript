@@ -153,7 +153,29 @@ var ClaG = new ClassG();
 console.log(ClassG.index);
 var ClaG_1 = new ClassG();
 console.log(ClassG.index);
-
+//// === 關於 function ===
+var fun = function (a, b) {
+    if (b === void 0) { b = "bbb"; }
+    return a === b;
+};
+var fun5 = function () { };
+var fun6 = function (a) { return a; };
+//// === 泛行<T> ===
+//// 泛型function 用法
+function fun2(aa) {
+    return aa;
+}
+fun2("aa");
+fun2("aa");
+//// Typescript 簡寫寫法
+var fun3 = function (aa) {
+    return aa;
+};
+fun3("aa");
+var fun6 = function (a) {
+    var rd = ;
+    return rd;
+};
 
 var myModule;
 (function (myModule) {
@@ -175,4 +197,3 @@ var myModule;
 
 var myClass = new myModule.ClassTest();
 console.log(myClass.getP1());
-

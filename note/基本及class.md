@@ -141,6 +141,36 @@ function createUser(data:user){
 }
 ```
 
+> 設定一組interface來定義function的 **回傳值** 或 **參數**
+
+作為 **回傳值**
+
+```
+interface Ifun {
+    (x:string,y:string):string;
+}
+
+//// 這邊是定義必須回傳此interface的格式
+var test2 = function(x:string,y:string):Ifun {
+    return function (x,y){  return "" };
+}
+
+```
+
+作為 **傳入參數與回傳值 定義**
+
+```
+interface Ifun {
+    (x:string,y:string):string;
+}
+
+//// 這邊是定義function的傳入參數及回值須符合interface格式
+var test1:Ifun = function(x:string,y:string) {
+    return "xx";
+}
+
+```
+
 > 給class繼承 必須要有相同的屬性設定
 
 ```
