@@ -16,6 +16,7 @@ UpgradeLog*.htm
 *.Cache
 .sass-cache/
 node_modules/
+Script/typings/
 npm-debug.log
 Enums.js
 Enums.js.map
